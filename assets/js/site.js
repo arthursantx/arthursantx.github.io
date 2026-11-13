@@ -18,6 +18,57 @@ if (typeof document !== 'undefined') {
   document.documentElement.classList.add('js');
 }
 
+/** Textos gerados pelo script, no idioma da página (pt, en ou es). */
+const TEXTOS = {
+  pt: {
+    abrirMenu: 'Abrir menu',
+    fecharMenu: 'Fechar menu',
+    erroNome: 'Conte como posso te chamar.',
+    erroEmail: 'Informe um e-mail para eu responder.',
+    erroEmailInvalido: 'Esse e-mail parece incompleto. Confira, por favor.',
+    erroMensagem: 'Escreva um pouco mais sobre o assunto (mínimo de 10 caracteres).',
+    assuntoPadrao: 'Contato pelo site',
+    abrimosEmail: 'Abrimos seu aplicativo de e-mail com a mensagem pronta; é só enviar. Se nada abriu, escreva para',
+    ouLinkedin: 'ou fale comigo pelo',
+    enviando: 'Enviando…',
+    enviar: 'Enviar mensagem',
+    enviado: 'Mensagem enviada. Obrigado pelo contato, respondo assim que possível.',
+    falhaEnvio: 'Não foi possível enviar agora. Tente de novo em instantes ou use o LinkedIn.',
+  },
+  en: {
+    abrirMenu: 'Open menu',
+    fecharMenu: 'Close menu',
+    erroNome: 'Please tell me your name.',
+    erroEmail: 'Please enter an email so I can reply.',
+    erroEmailInvalido: 'This email looks incomplete. Please check it.',
+    erroMensagem: 'Please write a bit more (at least 10 characters).',
+    assuntoPadrao: 'Contact from the website',
+    abrimosEmail: 'Your email app has opened with the message ready to send. If nothing opened, write to',
+    ouLinkedin: 'or reach me on',
+    enviando: 'Sending…',
+    enviar: 'Send message',
+    enviado: 'Message sent. Thank you for reaching out, I will reply as soon as possible.',
+    falhaEnvio: 'The message could not be sent right now. Please try again shortly or use LinkedIn.',
+  },
+  es: {
+    abrirMenu: 'Abrir menú',
+    fecharMenu: 'Cerrar menú',
+    erroNome: 'Cuéntame cómo te llamas.',
+    erroEmail: 'Escribe un correo para que pueda responderte.',
+    erroEmailInvalido: 'Este correo parece incompleto. Revísalo, por favor.',
+    erroMensagem: 'Escribe un poco más sobre el tema (mínimo 10 caracteres).',
+    assuntoPadrao: 'Contacto desde el sitio',
+    abrimosEmail: 'Se abrió tu aplicación de correo con el mensaje listo; solo tienes que enviarlo. Si no se abrió nada, escribe a',
+    ouLinkedin: 'o háblame por',
+    enviando: 'Enviando…',
+    enviar: 'Enviar mensaje',
+    enviado: 'Mensaje enviado. Gracias por escribir, responderé lo antes posible.',
+    falhaEnvio: 'No fue posible enviar ahora. Inténtalo de nuevo en unos instantes o usa LinkedIn.',
+  },
+};
+const IDIOMA = (typeof document !== 'undefined' && (document.documentElement.lang || 'pt').slice(0, 2)) || 'pt';
+const T = TEXTOS[IDIOMA] || TEXTOS.pt;
+
 if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded', () => {
   aplicarConfiguracao();
   prepararTopo();
@@ -25,6 +76,8 @@ if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded
   prepararSecaoAtiva();
   prepararRevelacao();
   prepararFormulario();
+  prepararAcessibilidade();
+  prepararVenn();
   const ano = document.querySelector('[data-ano]');
   if (ano) ano.textContent = String(new Date().getFullYear());
 });
@@ -59,7 +112,7 @@ function prepararMenu() {
     botao.setAttribute('aria-expanded', String(aberto));
     menu.classList.toggle('aberto', aberto);
     document.body.style.overflow = aberto ? 'hidden' : '';
-    if (rotulo) rotulo.textContent = aberto ? 'Fechar menu' : 'Abrir menu';
+    if (rotulo) rotulo.textContent = aberto ? T.fecharMenu : T.abrirMenu;
     if (aberto) menu.querySelector('a')?.focus();
   };
 
@@ -123,12 +176,12 @@ function prepararRevelacao() {
 const EMAIL_VALIDO = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** Regras de validação do formulário. Exportável para teste: recebe os valores e devolve os erros por campo. */
-function validarContato({ nome, email, mensagem }) {
+function validarContato({ nome, email, mensagem }, textos = T) {
   const erros = {};
-  if (!nome.trim()) erros.nome = 'Conte como posso te chamar.';
-  if (!email.trim()) erros.email = 'Informe um e-mail para eu responder.';
-  else if (!EMAIL_VALIDO.test(email.trim())) erros.email = 'Esse e-mail parece incompleto. Confira, por favor.';
-  if (mensagem.trim().length < 10) erros.mensagem = 'Escreva um pouco mais sobre o assunto (mínimo de 10 caracteres).';
+  if (!nome.trim()) erros.nome = textos.erroNome;
+  if (!email.trim()) erros.email = textos.erroEmail;
+  else if (!EMAIL_VALIDO.test(email.trim())) erros.email = textos.erroEmailInvalido;
+  if (mensagem.trim().length < 10) erros.mensagem = textos.erroMensagem;
   return erros;
 }
 
@@ -183,20 +236,20 @@ function prepararFormulario() {
     if (!CONFIG.formEndpoint) {
       // Sem serviço de envio: abre o e-mail do visitante já endereçado e preenchido.
       const v = valores();
-      const assunto = v.assunto.trim() || `Contato pelo site · ${v.nome.trim()}`;
+      const assunto = v.assunto.trim() || `${T.assuntoPadrao} · ${v.nome.trim()}`;
       const corpo = `${v.mensagem.trim()}\n\n${v.nome.trim()}\n${v.email.trim()}`;
       window.location.href =
         `mailto:${CONFIG.email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
       status.className = 'formulario-status aviso';
       status.innerHTML =
-        'Abrimos seu aplicativo de e-mail com a mensagem pronta; é só enviar. Se nada abriu, escreva para ' +
-        `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a> ou fale comigo pelo ` +
+        `${T.abrimosEmail} ` +
+        `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a> ${T.ouLinkedin} ` +
         `<a href="${CONFIG.linkedin}" target="_blank" rel="noopener">LinkedIn</a>.`;
       return;
     }
 
     enviar.disabled = true;
-    enviar.textContent = 'Enviando…';
+    enviar.textContent = T.enviando;
     try {
       const resposta = await fetch(CONFIG.formEndpoint, {
         method: 'POST',
@@ -207,15 +260,184 @@ function prepararFormulario() {
       form.reset();
       tentou = false;
       status.className = 'formulario-status ok';
-      status.textContent = 'Mensagem enviada. Obrigado pelo contato, respondo assim que possível.';
+      status.textContent = T.enviado;
     } catch {
       status.className = 'formulario-status erro';
-      status.textContent = 'Não foi possível enviar agora. Tente de novo em instantes ou use o LinkedIn.';
+      status.textContent = T.falhaEnvio;
     } finally {
       enviar.disabled = false;
-      enviar.textContent = 'Enviar mensagem';
+      enviar.textContent = T.enviar;
     }
   });
 }
 
-if (typeof module !== 'undefined') module.exports = { validarContato };
+/* ---------- Acessibilidade ---------- */
+
+const ESCALAS = [1, 1.15, 1.3, 1.5];
+const OPCOES = ['contraste', 'leitura', 'espacamento', 'links', 'movimento', 'guia', 'libras'];
+const CHAVE_A11Y = 'ab-acessibilidade';
+
+/** Garante que as preferências salvas tenham só valores conhecidos. Exportável para teste. */
+function normalizarPreferencias(bruto) {
+  const pref = { escala: 0 };
+  const dados = bruto && typeof bruto === 'object' ? bruto : {};
+  const escala = Number(dados.escala);
+  pref.escala = Number.isInteger(escala) && escala >= 0 && escala < ESCALAS.length ? escala : 0;
+  OPCOES.forEach((o) => (pref[o] = dados[o] === true));
+  return pref;
+}
+
+function lerPreferencias() {
+  try {
+    return normalizarPreferencias(JSON.parse(localStorage.getItem(CHAVE_A11Y) || '{}'));
+  } catch {
+    return normalizarPreferencias({});
+  }
+}
+
+function salvarPreferencias(pref) {
+  try {
+    localStorage.setItem(CHAVE_A11Y, JSON.stringify(pref));
+  } catch {
+    /* navegação privada ou armazenamento bloqueado: as escolhas valem só nesta visita */
+  }
+}
+
+function carregarFonteLeitura() {
+  if (document.querySelector('[data-fonte-leitura]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap';
+  link.dataset.fonteLeitura = '';
+  document.head.appendChild(link);
+}
+
+let guia = null;
+function moverGuia(e) {
+  if (guia) guia.style.top = `${e.clientY}px`;
+}
+function definirGuia(ativo) {
+  if (ativo && !guia) {
+    guia = document.createElement('div');
+    guia.className = 'a11y-guia';
+    guia.setAttribute('aria-hidden', 'true');
+    guia.style.top = '50%';
+    document.body.appendChild(guia);
+    window.addEventListener('pointermove', moverGuia, { passive: true });
+  } else if (!ativo && guia) {
+    guia.remove();
+    guia = null;
+    window.removeEventListener('pointermove', moverGuia);
+  }
+}
+
+let librasCarregado = false;
+function carregarLibras() {
+  // Widget oficial do Governo Federal (vlibras.gov.br). Só é baixado se a pessoa ativar a opção.
+  if (librasCarregado) {
+    document.querySelector('[vw]')?.removeAttribute('hidden');
+    return;
+  }
+  librasCarregado = true;
+  const caixa = document.createElement('div');
+  caixa.setAttribute('vw', '');
+  caixa.className = 'enabled';
+  caixa.innerHTML = '<div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>';
+  document.body.appendChild(caixa);
+  const script = document.createElement('script');
+  script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+  script.onload = () => {
+    try {
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+      // o widget se monta no evento load, que já aconteceu
+      window.dispatchEvent(new Event('load'));
+    } catch {
+      /* serviço indisponível */
+    }
+  };
+  document.body.appendChild(script);
+}
+
+function aplicarPreferencias(pref) {
+  const raiz = document.documentElement;
+  raiz.style.setProperty('--a11y-escala', String(ESCALAS[pref.escala]));
+  ['contraste', 'leitura', 'espacamento', 'links', 'movimento'].forEach((o) => raiz.classList.toggle(`a11y-${o}`, pref[o]));
+  if (pref.leitura) carregarFonteLeitura();
+  definirGuia(pref.guia);
+  if (pref.libras && IDIOMA === 'pt') carregarLibras();
+  else document.querySelector('[vw]')?.setAttribute('hidden', '');
+}
+
+function prepararAcessibilidade() {
+  const botao = document.querySelector('[data-a11y-botao]');
+  const painel = document.querySelector('[data-a11y-painel]');
+  let pref = lerPreferencias();
+  aplicarPreferencias(pref);
+  if (!botao || !painel) return;
+
+  const saida = painel.querySelector('[data-a11y-escala]');
+  const menos = painel.querySelector('[data-a11y-texto="-1"]');
+  const mais = painel.querySelector('[data-a11y-texto="1"]');
+
+  const sincronizar = () => {
+    saida.textContent = `${Math.round(ESCALAS[pref.escala] * 100)}%`;
+    menos.disabled = pref.escala === 0;
+    mais.disabled = pref.escala === ESCALAS.length - 1;
+    painel.querySelectorAll('[data-a11y]').forEach((b) => b.setAttribute('aria-pressed', String(pref[b.dataset.a11y])));
+  };
+  const atualizar = (mudanca) => {
+    pref = normalizarPreferencias({ ...pref, ...mudanca });
+    aplicarPreferencias(pref);
+    salvarPreferencias(pref);
+    sincronizar();
+  };
+  sincronizar();
+
+  const abrir = (aberto) => {
+    painel.hidden = !aberto;
+    botao.setAttribute('aria-expanded', String(aberto));
+    if (aberto) painel.querySelector('button')?.focus();
+  };
+  botao.addEventListener('click', () => abrir(painel.hidden));
+  painel.querySelector('[data-a11y-fechar]')?.addEventListener('click', () => {
+    abrir(false);
+    botao.focus();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !painel.hidden) {
+      abrir(false);
+      botao.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!painel.hidden && !painel.contains(e.target) && !botao.contains(e.target)) abrir(false);
+  });
+
+  painel.querySelectorAll('[data-a11y-texto]').forEach((b) =>
+    b.addEventListener('click', () => atualizar({ escala: pref.escala + Number(b.dataset.a11yTexto) })),
+  );
+  painel.querySelectorAll('[data-a11y]').forEach((b) =>
+    b.addEventListener('click', () => atualizar({ [b.dataset.a11y]: !pref[b.dataset.a11y] })),
+  );
+  painel.querySelector('[data-a11y-restaurar]')?.addEventListener('click', () => atualizar(normalizarPreferencias({})));
+}
+
+/* ---------- Diagrama "Onde eu atuo" ---------- */
+
+function prepararVenn() {
+  const venn = document.querySelector('[data-venn]');
+  const detalhes = document.querySelector('[data-venn-detalhes]');
+  if (!venn || !detalhes) return;
+  const alvos = [...venn.querySelectorAll('[data-regiao]')];
+
+  const escolher = (regiao) => {
+    alvos.forEach((a) => a.setAttribute('aria-pressed', String(a.dataset.regiao === regiao)));
+    detalhes.querySelectorAll('[data-regiao-conteudo]').forEach((li) => li.classList.toggle('ativo', li.dataset.regiaoConteudo === regiao));
+    // destaca os círculos envolvidos: 'tn' acende tecnologia e negócios
+    venn.dataset.ativo = regiao.split('').join(' ');
+  };
+  alvos.forEach((a) => a.addEventListener('click', () => escolher(a.dataset.regiao)));
+  escolher(alvos.find((a) => a.getAttribute('aria-pressed') === 'true')?.dataset.regiao || 'tnp');
+}
+
+if (typeof module !== 'undefined') module.exports = { validarContato, TEXTOS, normalizarPreferencias };

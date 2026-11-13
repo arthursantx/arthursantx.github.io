@@ -15,12 +15,17 @@
   <meta property="og:url" content="https://arthursantx.github.io/projetos/nexus/">
   <meta property="og:image" content="https://arthursantx.github.io/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="alternate" hreflang="pt-BR" href="https://arthursantx.github.io/projetos/nexus/">
+  <link rel="alternate" hreflang="en" href="https://arthursantx.github.io/en/projetos/nexus/">
+  <link rel="alternate" hreflang="es" href="https://arthursantx.github.io/es/projetos/nexus/">
+  <link rel="alternate" hreflang="x-default" href="https://arthursantx.github.io/projetos/nexus/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script src="/assets/js/site.js" defer></script>
+  <script>try{var a=JSON.parse(localStorage.getItem('ab-acessibilidade')||'{}'),r=document.documentElement,e=[1,1.15,1.3,1.5][a.escala]||1;r.style.setProperty('--a11y-escala',e);['contraste','leitura','espacamento','links','movimento'].forEach(function(o){if(a[o]===true)r.classList.add('a11y-'+o)})}catch(x){}</script>
 </head>
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -28,13 +33,9 @@
   <header class="topo" data-topo>
     <div class="topo-interno">
       <a class="monograma" href="/" aria-label="Arthur Borges, página inicial">
-        <span class="monograma-marca" aria-hidden="true">AB</span>
+        <img class="monograma-foto" src="/assets/img/avatar.webp" alt="" width="40" height="40">
         <span class="monograma-nome">Arthur Borges</span>
       </a>
-      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-botao>
-        <span class="menu-botao-linhas" aria-hidden="true"></span>
-        <span class="visualmente-oculto">Abrir menu</span>
-      </button>
       <nav class="menu" id="menu" aria-label="Site" data-menu>
         <ul>
           <li><a href="/#sobre">Sobre</a></li>
@@ -45,8 +46,49 @@
           <li><a href="/#contato" class="menu-contato">Contato</a></li>
         </ul>
       </nav>
+      <div class="ferramentas">
+        <nav class="idiomas" aria-label="Idioma">
+          <a href="/projetos/nexus/" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" aria-current="page"><span aria-hidden="true">PT</span><span class="visualmente-oculto">Português</span></a>
+          <a href="/en/projetos/nexus/" hreflang="en" lang="en" data-idioma="en"><span aria-hidden="true">EN</span><span class="visualmente-oculto">English</span></a>
+          <a href="/es/projetos/nexus/" hreflang="es" lang="es" data-idioma="es"><span aria-hidden="true">ES</span><span class="visualmente-oculto">Español</span></a>
+        </nav>
+        <button class="a11y-botao" type="button" aria-expanded="false" aria-controls="a11y" data-a11y-botao>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="6.7" r="1.6"/><path d="M6.4 9.1c1.9.5 3.8.8 5.6.8s3.7-.3 5.6-.8l.4 1.4c-1.4.4-2.9.7-4.3.9v2.4l1.6 4.6-1.4.5-1.6-4.6h-1.2l-1.6 4.6-1.4-.5 1.6-4.6v-2.4c-1.4-.2-2.9-.5-4.3-.9l.4-1.4Z"/></svg>
+          <span class="visualmente-oculto">Acessibilidade</span>
+        </button>
+      </div>
+      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-botao>
+        <span class="menu-botao-linhas" aria-hidden="true"></span>
+        <span class="visualmente-oculto">Abrir menu</span>
+      </button>
     </div>
   </header>
+
+  <div class="a11y-painel" id="a11y" role="dialog" aria-labelledby="a11y-titulo" hidden data-a11y-painel>
+    <div class="a11y-cabeca">
+      <h2 id="a11y-titulo">Acessibilidade</h2>
+      <button type="button" class="a11y-fechar" data-a11y-fechar><span aria-hidden="true">×</span><span class="visualmente-oculto">Fechar painel de acessibilidade</span></button>
+    </div>
+    <div class="a11y-grupo" role="group" aria-labelledby="a11y-tamanho">
+      <p id="a11y-tamanho" class="a11y-rotulo">Tamanho do texto</p>
+      <div class="a11y-tamanho">
+        <button type="button" data-a11y-texto="-1"><span aria-hidden="true">A−</span><span class="visualmente-oculto">Diminuir texto</span></button>
+        <output data-a11y-escala>100%</output>
+        <button type="button" data-a11y-texto="1"><span aria-hidden="true">A+</span><span class="visualmente-oculto">Aumentar texto</span></button>
+      </div>
+    </div>
+    <ul class="a11y-opcoes">
+      <li><button type="button" aria-pressed="false" data-a11y="contraste"><span class="a11y-chave" aria-hidden="true"></span>Alto contraste</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="leitura"><span class="a11y-chave" aria-hidden="true"></span>Fonte de leitura facilitada</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="espacamento"><span class="a11y-chave" aria-hidden="true"></span>Mais espaço entre letras e linhas</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="links"><span class="a11y-chave" aria-hidden="true"></span>Destacar links e botões</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="movimento"><span class="a11y-chave" aria-hidden="true"></span>Pausar animações</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="guia"><span class="a11y-chave" aria-hidden="true"></span>Guia de leitura</button></li>
+      <li data-so-pt><button type="button" aria-pressed="false" data-a11y="libras"><span class="a11y-chave" aria-hidden="true"></span>Tradução para Libras (VLibras)</button></li>
+    </ul>
+    <button type="button" class="a11y-restaurar" data-a11y-restaurar>Restaurar padrão</button>
+    <p class="a11y-nota">Suas escolhas ficam salvas neste navegador. O site também respeita a preferência de movimento reduzido do seu sistema.</p>
+  </div>
 
   <main id="conteudo">
     <section class="caso-hero">
@@ -153,7 +195,7 @@
 
   <footer class="rodape">
     <div class="envoltorio rodape-interno">
-      <p><span class="monograma-marca monograma-pequeno" aria-hidden="true">AB</span> Arthur Borges · <span data-ano>2026</span></p>
+      <p><img class="monograma-foto monograma-pequeno" src="/assets/img/avatar.webp" alt="" width="28" height="28" loading="lazy"> Arthur Borges · <span data-ano>2026</span></p>
       <nav aria-label="Rodapé">
         <a href="https://www.linkedin.com/in/arthurborgessantos/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/arthursantx" target="_blank" rel="noopener">GitHub</a>

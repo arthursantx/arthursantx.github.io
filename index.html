@@ -20,12 +20,17 @@
   <meta property="og:image:alt" content="Arthur Borges, Technology & Business Professional">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="alternate" hreflang="pt-BR" href="https://arthursantx.github.io/">
+  <link rel="alternate" hreflang="en" href="https://arthursantx.github.io/en/">
+  <link rel="alternate" hreflang="es" href="https://arthursantx.github.io/es/">
+  <link rel="alternate" hreflang="x-default" href="https://arthursantx.github.io/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script src="/assets/js/site.js" defer></script>
+  <script>try{var a=JSON.parse(localStorage.getItem('ab-acessibilidade')||'{}'),r=document.documentElement,e=[1,1.15,1.3,1.5][a.escala]||1;r.style.setProperty('--a11y-escala',e);['contraste','leitura','espacamento','links','movimento'].forEach(function(o){if(a[o]===true)r.classList.add('a11y-'+o)})}catch(x){}</script>
 
   <script type="application/ld+json">
   {
@@ -49,13 +54,9 @@
   <header class="topo" data-topo>
     <div class="topo-interno">
       <a class="monograma" href="#inicio" aria-label="Arthur Borges, voltar ao início">
-        <span class="monograma-marca" aria-hidden="true">AB</span>
+        <img class="monograma-foto" src="/assets/img/avatar.webp" alt="" width="40" height="40">
         <span class="monograma-nome">Arthur Borges</span>
       </a>
-      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-botao>
-        <span class="menu-botao-linhas" aria-hidden="true"></span>
-        <span class="visualmente-oculto">Abrir menu</span>
-      </button>
       <nav class="menu" id="menu" aria-label="Seções" data-menu>
         <ul>
           <li><a href="#sobre">Sobre</a></li>
@@ -66,8 +67,49 @@
           <li><a href="#contato" class="menu-contato">Contato</a></li>
         </ul>
       </nav>
+      <div class="ferramentas">
+        <nav class="idiomas" aria-label="Idioma">
+          <a href="/" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" aria-current="page"><span aria-hidden="true">PT</span><span class="visualmente-oculto">Português</span></a>
+          <a href="/en/" hreflang="en" lang="en" data-idioma="en"><span aria-hidden="true">EN</span><span class="visualmente-oculto">English</span></a>
+          <a href="/es/" hreflang="es" lang="es" data-idioma="es"><span aria-hidden="true">ES</span><span class="visualmente-oculto">Español</span></a>
+        </nav>
+        <button class="a11y-botao" type="button" aria-expanded="false" aria-controls="a11y" data-a11y-botao>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="6.7" r="1.6"/><path d="M6.4 9.1c1.9.5 3.8.8 5.6.8s3.7-.3 5.6-.8l.4 1.4c-1.4.4-2.9.7-4.3.9v2.4l1.6 4.6-1.4.5-1.6-4.6h-1.2l-1.6 4.6-1.4-.5 1.6-4.6v-2.4c-1.4-.2-2.9-.5-4.3-.9l.4-1.4Z"/></svg>
+          <span class="visualmente-oculto">Acessibilidade</span>
+        </button>
+      </div>
+      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-botao>
+        <span class="menu-botao-linhas" aria-hidden="true"></span>
+        <span class="visualmente-oculto">Abrir menu</span>
+      </button>
     </div>
   </header>
+
+  <div class="a11y-painel" id="a11y" role="dialog" aria-labelledby="a11y-titulo" hidden data-a11y-painel>
+    <div class="a11y-cabeca">
+      <h2 id="a11y-titulo">Acessibilidade</h2>
+      <button type="button" class="a11y-fechar" data-a11y-fechar><span aria-hidden="true">×</span><span class="visualmente-oculto">Fechar painel de acessibilidade</span></button>
+    </div>
+    <div class="a11y-grupo" role="group" aria-labelledby="a11y-tamanho">
+      <p id="a11y-tamanho" class="a11y-rotulo">Tamanho do texto</p>
+      <div class="a11y-tamanho">
+        <button type="button" data-a11y-texto="-1"><span aria-hidden="true">A−</span><span class="visualmente-oculto">Diminuir texto</span></button>
+        <output data-a11y-escala>100%</output>
+        <button type="button" data-a11y-texto="1"><span aria-hidden="true">A+</span><span class="visualmente-oculto">Aumentar texto</span></button>
+      </div>
+    </div>
+    <ul class="a11y-opcoes">
+      <li><button type="button" aria-pressed="false" data-a11y="contraste"><span class="a11y-chave" aria-hidden="true"></span>Alto contraste</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="leitura"><span class="a11y-chave" aria-hidden="true"></span>Fonte de leitura facilitada</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="espacamento"><span class="a11y-chave" aria-hidden="true"></span>Mais espaço entre letras e linhas</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="links"><span class="a11y-chave" aria-hidden="true"></span>Destacar links e botões</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="movimento"><span class="a11y-chave" aria-hidden="true"></span>Pausar animações</button></li>
+      <li><button type="button" aria-pressed="false" data-a11y="guia"><span class="a11y-chave" aria-hidden="true"></span>Guia de leitura</button></li>
+      <li data-so-pt><button type="button" aria-pressed="false" data-a11y="libras"><span class="a11y-chave" aria-hidden="true"></span>Tradução para Libras (VLibras)</button></li>
+    </ul>
+    <button type="button" class="a11y-restaurar" data-a11y-restaurar>Restaurar padrão</button>
+    <p class="a11y-nota">Suas escolhas ficam salvas neste navegador. O site também respeita a preferência de movimento reduzido do seu sistema.</p>
+  </div>
 
   <main id="conteudo">
     <!-- 01 · HOME -->
@@ -101,22 +143,70 @@
         </figure>
       </div>
 
-      <div class="envoltorio">
-        <ul class="pilares" aria-label="Pilares de atuação">
-          <li class="pilar revelar">
-            <span class="pilar-numero">01</span>
-            <h2>Tecnologia</h2>
-            <p>Formação em ADS, leitura de sistemas, Business Intelligence e interesse por soluções digitais que resolvem problemas reais.</p>
+    </section>
+
+    <!-- 01b · ONDE EU ATUO -->
+    <section class="secao atuacao" id="atuacao" aria-labelledby="atuacao-titulo">
+      <div class="envoltorio atuacao-grade">
+        <div class="atuacao-intro">
+          <p class="rotulo revelar">Onde eu atuo</p>
+          <h2 id="atuacao-titulo" class="titulo-secao revelar">Tecnologia, negócios e pessoas. O valor está nas <em>interseções</em>.</h2>
+          <p class="atuacao-dica revelar">Escolha uma área do diagrama para ver como cada combinação aparece no meu trabalho.</p>
+        </div>
+
+        <div class="venn revelar" data-venn>
+          <svg class="venn-desenho" viewBox="0 0 400 370" aria-hidden="true">
+            <circle class="venn-circulo" data-circulo="t" cx="140" cy="130" r="112"/>
+            <circle class="venn-circulo" data-circulo="n" cx="260" cy="130" r="112"/>
+            <circle class="venn-circulo" data-circulo="p" cx="200" cy="234" r="112"/>
+          </svg>
+          <div class="venn-alvos" role="group" aria-label="Áreas do diagrama">
+            <button type="button" class="venn-alvo venn-alvo-principal" style="--x:20%;--y:24%" data-regiao="t" aria-pressed="false">Tecnologia</button>
+            <button type="button" class="venn-alvo venn-alvo-principal" style="--x:80%;--y:24%" data-regiao="n" aria-pressed="false">Negócios</button>
+            <button type="button" class="venn-alvo venn-alvo-principal" style="--x:50%;--y:84%" data-regiao="p" aria-pressed="false">Pessoas</button>
+            <button type="button" class="venn-alvo" style="--x:50%;--y:22%" data-regiao="tn" aria-pressed="false">Dados</button>
+            <button type="button" class="venn-alvo" style="--x:31%;--y:58%" data-regiao="tp" aria-pressed="false">Requisitos</button>
+            <button type="button" class="venn-alvo" style="--x:69%;--y:58%" data-regiao="np" aria-pressed="false">Áreas</button>
+            <button type="button" class="venn-alvo venn-alvo-centro" style="--x:50%;--y:45%" data-regiao="tnp" aria-pressed="true">Produto</button>
+          </div>
+        </div>
+
+        <ul class="venn-detalhes" aria-live="polite" data-venn-detalhes>
+          <li data-regiao-conteudo="tnp">
+            <p class="venn-detalhe-rotulo">Tecnologia + Negócios + Pessoas</p>
+            <h3>Gestão de produtos</h3>
+            <p>O ponto em que as três áreas se encontram é onde quero crescer: produtos digitais e transformação digital. O NEXUS é um exercício dessa visão.</p>
+            <a class="venn-link" href="/projetos/nexus/">Ver o projeto NEXUS <span aria-hidden="true">→</span></a>
           </li>
-          <li class="pilar revelar">
-            <span class="pilar-numero">02</span>
-            <h2>Negócios</h2>
-            <p>Rotina corporativa em Revenue: processos, indicadores e a visão de como a operação se transforma em resultado.</p>
+          <li data-regiao-conteudo="t">
+            <p class="venn-detalhe-rotulo">Tecnologia</p>
+            <h3>Base técnica</h3>
+            <p>Formação em Análise e Desenvolvimento de Sistemas, leitura de sistemas e Business Intelligence. Entendo a tecnologia o suficiente para conversar bem com quem a constrói.</p>
           </li>
-          <li class="pilar revelar">
-            <span class="pilar-numero">03</span>
-            <h2>Pessoas</h2>
-            <p>Comunicação, relacionamento e a capacidade de aproximar áreas e conduzir ideias até virarem iniciativas.</p>
+          <li data-regiao-conteudo="n">
+            <p class="venn-detalhe-rotulo">Negócios</p>
+            <h3>Visão de receita</h3>
+            <p>Rotina em Revenue: garantia de receita, processos e indicadores. Entender de onde a receita vem e onde ela pode se perder.</p>
+          </li>
+          <li data-regiao-conteudo="p">
+            <p class="venn-detalhe-rotulo">Pessoas</p>
+            <h3>Comunicação</h3>
+            <p>Relacionamento, apresentações e escuta. É o que faz uma boa ideia ganhar apoio dentro de uma empresa.</p>
+          </li>
+          <li data-regiao-conteudo="tn">
+            <p class="venn-detalhe-rotulo">Tecnologia + Negócios</p>
+            <h3>Dados para decidir</h3>
+            <p>Relatórios e dashboards em Power BI que transformam informação operacional em visibilidade para a gestão.</p>
+          </li>
+          <li data-regiao-conteudo="tp">
+            <p class="venn-detalhe-rotulo">Tecnologia + Pessoas</p>
+            <h3>Tradução de necessidades</h3>
+            <p>Transformar o que as áreas precisam em requisitos claros e explicar soluções técnicas para quem não é da área.</p>
+          </li>
+          <li data-regiao-conteudo="np">
+            <p class="venn-detalhe-rotulo">Negócios + Pessoas</p>
+            <h3>Alinhamento entre áreas</h3>
+            <p>Contato com diferentes áreas do ambiente corporativo, alinhando expectativas e levando indicadores para a conversa.</p>
           </li>
         </ul>
       </div>
@@ -191,11 +281,11 @@
             </ul>
           </div>
 
-          <aside class="destaque-bi revelar" aria-label="Destaque: dados e Power BI">
+          <div class="destaque-bi revelar">
             <svg aria-hidden="true" viewBox="0 0 48 48" class="destaque-bi-icone"><rect x="6" y="26" width="7" height="14" rx="1.5"/><rect x="18" y="18" width="7" height="22" rx="1.5"/><rect x="30" y="10" width="7" height="30" rx="1.5"/></svg>
             <h3>Dados para decidir melhor</h3>
             <p>Power BI faz parte da minha rotina: construo e evoluo relatórios e dashboards que dão visibilidade aos resultados e apoiam decisões no dia a dia da operação.</p>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
@@ -388,7 +478,7 @@
 
   <footer class="rodape">
     <div class="envoltorio rodape-interno">
-      <p><span class="monograma-marca monograma-pequeno" aria-hidden="true">AB</span> Arthur Borges · <span data-ano>2026</span></p>
+      <p><img class="monograma-foto monograma-pequeno" src="/assets/img/avatar.webp" alt="" width="28" height="28" loading="lazy"> Arthur Borges · <span data-ano>2026</span></p>
       <nav aria-label="Rodapé">
         <a href="https://www.linkedin.com/in/arthurborgessantos/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/arthursantx" target="_blank" rel="noopener">GitHub</a>
