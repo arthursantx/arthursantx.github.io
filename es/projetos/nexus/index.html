@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NEXUS · Caso de estudio · Arthur Borges</title>
-  <meta name="description" content="NEXUS — Strategic Technology Management Platform. Proyecto en desarrollo ideado por Arthur Borges para conectar necesidades de negocio, inversiones en tecnología y decisiones ejecutivas.">
+  <meta name="description" content="NEXUS — Strategic Technology Management Platform. Demostración funcional ideada por Arthur Borges para conectar necesidades de negocio, inversiones en tecnología y decisiones ejecutivas.">
   <link rel="canonical" href="https://arthursantx.github.io/es/projetos/nexus/">
   <meta name="theme-color" content="#0E1A2F">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Arthur Borges">
   <meta property="og:title" content="NEXUS — Strategic Technology Management Platform">
-  <meta property="og:description" content="Caso de estudio de un producto en desarrollo: de la necesidad de negocio a la decisión ejecutiva.">
+  <meta property="og:description" content="Caso de estudio y demostración funcional: de la necesidad de negocio a la decisión ejecutiva.">
   <meta property="og:url" content="https://arthursantx.github.io/es/projetos/nexus/">
   <meta property="og:image" content="https://arthursantx.github.io/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -93,15 +93,16 @@
     <section class="caso-hero">
       <div class="envoltorio">
         <a class="voltar" href="/es/#projetos"><span aria-hidden="true">←</span> Todos los proyectos</a>
-        <p class="projeto-status revelar"><span class="ponto" aria-hidden="true"></span>En desarrollo · conceptual</p>
+        <p class="projeto-status revelar"><span class="ponto" aria-hidden="true"></span>Demo funcional · fase 1</p>
         <h1 class="revelar">NEXUS — Strategic Technology Management Platform</h1>
-        <p class="caso-subtitulo revelar">Plataforma conceptual de gestión estratégica que conecta necesidades empresariales, inversiones tecnológicas y decisiones ejecutivas.</p>
+        <p class="caso-subtitulo revelar">Plataforma de gestión estratégica que conecta necesidades empresariales, inversiones tecnológicas y decisiones ejecutivas.</p>
         <dl class="caso-ficha revelar">
           <div><dt>Mi papel</dt><dd>Creador del producto</dd></div>
           <div><dt>Enfoque</dt><dd>Visión, requisitos y reglas de negocio</dd></div>
           <div><dt>Público</dt><dd>Dirección, CIO/CTO, POs, BAs y gerentes</dd></div>
-          <div><dt>Situación</dt><dd>En desarrollo</dd></div>
+          <div><dt>Situación</dt><dd>Demo funcional (fase 1)</dd></div>
         </dl>
+        <p class="caso-acoes revelar"><a class="botao botao-cheio" href="/es/nexus/" target="_blank" rel="noopener">Abrir la demostración</a> <a class="botao botao-contorno" href="https://github.com/arthursantx/nexus" target="_blank" rel="noopener">Ver código y documentación</a></p>
       </div>
     </section>
 
@@ -154,7 +155,7 @@
             <div class="modulo"><span>02</span><b>Business Needs</b><p>Registro de las necesidades de las áreas, con impacto, urgencia e historial.</p></div>
             <div class="modulo"><span>03</span><b>Strategic Prioritization</b><p>Matriz ponderada de 0 a 100 y vista impacto × esfuerzo.</p></div>
             <div class="modulo"><span>04</span><b>Technology Portfolio</b><p>Iniciativas con presupuesto, responsables, riesgos y cronograma.</p></div>
-            <div class="modulo"><span>05</span><b>NEXUS Intelligence</b><p>Asistente de IA que responde con base en los datos de la plataforma e indica cuándo faltan datos.</p></div>
+            <div class="modulo"><span>05</span><b>NEXUS Intelligence</b><p>Responde preguntas usando solo los datos de la plataforma y dice cuándo faltan datos. En la fase 1 funciona por reglas, sin IA generativa.</p></div>
             <div class="modulo"><span>06</span><b>Executive Decisions</b><p>Decision Log con tipo, justificación, participantes y plazos.</p></div>
             <div class="modulo"><span>07</span><b>Reports &amp; Insights</b><p>Informes por período y área, con exportación en PDF y CSV.</p></div>
             <div class="modulo"><span>08</span><b>Value Tracking</b><p>Compara el ahorro proyectado y el medido, separando el beneficio estimado del confirmado.</p></div>
@@ -170,21 +171,27 @@
               <li>Definición de los módulos, requisitos y reglas de negocio, como los criterios y pesos de la priorización y el cálculo del valor entregado.</li>
               <li>Dirección funcional y validación de las entregas.</li>
             </ul>
-            <p class="aviso-transparencia">La implementación técnica se está haciendo con apoyo de inteligencia artificial, bajo mi orientación de producto. Esta división de roles estará documentada en el repositorio.</p>
+            <p class="aviso-transparencia">La implementación técnica se hizo con apoyo de inteligencia artificial, bajo mi dirección de producto. Esta división de roles está documentada en el repositorio.</p>
           </div>
         </article>
 
         <article class="caso-bloco revelar">
           <h2><span>07</span>Tecnologías</h2>
           <div class="caso-texto">
-            <p>Stack prevista: Next.js, React y TypeScript en la interfaz; PostgreSQL para los datos; autenticación con perfiles y permisos; integración opcional con modelos de IA configurada en el servidor.</p>
+            <p>Fase 1 (publicada): React, TypeScript y Vite, gráficos con Recharts, pruebas con Vitest y publicación automática en GitHub Pages con GitHub Actions. Las reglas de negocio están separadas de las pantallas y tienen sus propias pruebas.</p>
+            <p>Fase 2 (planificada): API con base de datos PostgreSQL, inicio de sesión real con permisos en el servidor e IA generativa configurada en el servidor.</p>
           </div>
         </article>
 
         <article class="caso-bloco revelar">
           <h2><span>08</span>Resultados y aprendizajes</h2>
           <div class="caso-texto">
-            <p>El proyecto está en desarrollo. Los resultados, la demostración y los aprendizajes se publicarán aquí cuando el producto esté funcionando.</p>
+            <p>La fase 1 está publicada como demostración, con datos de una empresa ficticia. Todos los módulos funcionan en el navegador, con perfiles de acceso, registro de auditoría y exportación de informes.</p>
+            <ul class="lista-marcada">
+              <li>Una regla de priorización solo convence cuando se puede explicar: por eso la pantalla muestra cuánto sumó cada criterio.</li>
+              <li>El beneficio estimado y el confirmado deben mostrarse por separado, y las horas ahorradas no son dinero ahorrado.</li>
+              <li>Documentar la visión, los procesos, las reglas y las decisiones antes de construir hizo que la implementación fuera más rápida y fácil de revisar.</li>
+            </ul>
             <p><a class="botao botao-contorno" href="/es/#contato">Conversar sobre el proyecto</a></p>
           </div>
         </article>

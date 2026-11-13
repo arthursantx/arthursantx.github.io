@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NEXUS · Case study · Arthur Borges</title>
-  <meta name="description" content="NEXUS — Strategic Technology Management Platform. A project in development, conceived by Arthur Borges, to connect business needs, technology investments and executive decisions.">
+  <meta name="description" content="NEXUS — Strategic Technology Management Platform. A working demo conceived by Arthur Borges to connect business needs, technology investments and executive decisions.">
   <link rel="canonical" href="https://arthursantx.github.io/en/projetos/nexus/">
   <meta name="theme-color" content="#0E1A2F">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Arthur Borges">
   <meta property="og:title" content="NEXUS — Strategic Technology Management Platform">
-  <meta property="og:description" content="Case study of a product in development: from business need to executive decision.">
+  <meta property="og:description" content="Case study and working demo: from business need to executive decision.">
   <meta property="og:url" content="https://arthursantx.github.io/en/projetos/nexus/">
   <meta property="og:image" content="https://arthursantx.github.io/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -93,15 +93,16 @@
     <section class="caso-hero">
       <div class="envoltorio">
         <a class="voltar" href="/en/#projetos"><span aria-hidden="true">←</span> All projects</a>
-        <p class="projeto-status revelar"><span class="ponto" aria-hidden="true"></span>In development · concept</p>
+        <p class="projeto-status revelar"><span class="ponto" aria-hidden="true"></span>Working demo · phase 1</p>
         <h1 class="revelar">NEXUS — Strategic Technology Management Platform</h1>
-        <p class="caso-subtitulo revelar">A concept platform for strategic management that connects business needs, technology investments and executive decisions.</p>
+        <p class="caso-subtitulo revelar">A strategic management platform that connects business needs, technology investments and executive decisions.</p>
         <dl class="caso-ficha revelar">
           <div><dt>My role</dt><dd>Product creator</dd></div>
           <div><dt>Focus</dt><dd>Vision, requirements and business rules</dd></div>
           <div><dt>Audience</dt><dd>Executives, CIO/CTO, POs, BAs and managers</dd></div>
-          <div><dt>Status</dt><dd>In development</dd></div>
+          <div><dt>Status</dt><dd>Working demo (phase 1)</dd></div>
         </dl>
+        <p class="caso-acoes revelar"><a class="botao botao-cheio" href="/en/nexus/" target="_blank" rel="noopener">Open the demo</a> <a class="botao botao-contorno" href="https://github.com/arthursantx/nexus" target="_blank" rel="noopener">See code and documentation</a></p>
       </div>
     </section>
 
@@ -154,7 +155,7 @@
             <div class="modulo"><span>02</span><b>Business Needs</b><p>A record of each team’s needs, with impact, urgency and history.</p></div>
             <div class="modulo"><span>03</span><b>Strategic Prioritization</b><p>Weighted 0–100 matrix and an impact × effort view.</p></div>
             <div class="modulo"><span>04</span><b>Technology Portfolio</b><p>Initiatives with budget, owners, risks and timeline.</p></div>
-            <div class="modulo"><span>05</span><b>NEXUS Intelligence</b><p>An AI assistant that answers from the platform’s data and says when data is missing.</p></div>
+            <div class="modulo"><span>05</span><b>NEXUS Intelligence</b><p>Answers questions using only the platform data and says when data is missing. In phase 1 it is rule-based, without generative AI.</p></div>
             <div class="modulo"><span>06</span><b>Executive Decisions</b><p>Decision Log with type, rationale, participants and deadlines.</p></div>
             <div class="modulo"><span>07</span><b>Reports &amp; Insights</b><p>Reports by period and team, with PDF and CSV export.</p></div>
             <div class="modulo"><span>08</span><b>Value Tracking</b><p>Compares projected and measured savings, separating estimated from confirmed benefits.</p></div>
@@ -170,21 +171,27 @@
               <li>Defining the modules, requirements and business rules, such as the prioritization criteria and weights and how delivered value is calculated.</li>
               <li>Functional direction and validation of deliverables.</li>
             </ul>
-            <p class="aviso-transparencia">The technical implementation is being done with the help of artificial intelligence, under my product direction. This division of roles will be documented in the repository.</p>
+            <p class="aviso-transparencia">The technical implementation was done with the support of artificial intelligence, under my product direction. This division of roles is documented in the repository.</p>
           </div>
         </article>
 
         <article class="caso-bloco revelar">
           <h2><span>07</span>Technologies</h2>
           <div class="caso-texto">
-            <p>Planned stack: Next.js, React and TypeScript for the interface; PostgreSQL for data; authentication with roles and permissions; optional integration with AI models configured on the server.</p>
+            <p>Phase 1 (published): React, TypeScript and Vite, charts with Recharts, tests with Vitest and automatic publishing to GitHub Pages through GitHub Actions. Business rules are kept separate from the screens and have their own tests.</p>
+            <p>Phase 2 (planned): an API with a PostgreSQL database, real login with server-side permissions, and generative AI configured on the server.</p>
           </div>
         </article>
 
         <article class="caso-bloco revelar">
           <h2><span>08</span>Results and learnings</h2>
           <div class="caso-texto">
-            <p>The project is in development. Results, a demo and learnings will be published here once the product is working.</p>
+            <p>Phase 1 is published as a demo, with data from a fictional company. Every module works in the browser, with access profiles, an audit trail and report export.</p>
+            <ul class="lista-marcada">
+              <li>A prioritization rule is only convincing when it can be explained: that is why the screen shows how much each criterion added.</li>
+              <li>Estimated and confirmed benefits need to be shown separately, and hours saved are not money saved.</li>
+              <li>Documenting the vision, processes, rules and decisions before building made the implementation faster and easier to review.</li>
+            </ul>
             <p><a class="botao botao-contorno" href="/en/#contato">Talk about the project</a></p>
           </div>
         </article>

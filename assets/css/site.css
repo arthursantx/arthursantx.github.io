@@ -361,7 +361,7 @@ em { font-style: italic; }
 
 /* ---------- página de projeto ---------- */
 .caso-hero { padding-top: calc(var(--topo-altura) + clamp(40px, 7vh, 88px)); padding-bottom: clamp(48px, 7vw, 88px); }
-.voltar { display: inline-flex; gap: 8px; align-items: center; color: var(--tinta-suave); text-decoration: none; font-size: 15px; margin-bottom: 36px; }
+.voltar { display: flex; width: fit-content; gap: 8px; align-items: center; color: var(--tinta-suave); text-decoration: none; font-size: 15px; margin-bottom: 36px; }
 .voltar:hover { color: var(--azul); }
 .caso-hero h1 { font: 400 clamp(44px, 6.6vw, 88px)/1.0 var(--serifa); letter-spacing: -.02em; max-width: 14ch; }
 .caso-subtitulo { margin-top: 24px; font-size: 20px; color: var(--tinta-suave); max-width: 52ch; }
@@ -591,3 +591,4 @@ html:not(.js) .venn-alvos { display: none; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .js .revelar { opacity: 1; transform: none; }
 }
+.caso-acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
