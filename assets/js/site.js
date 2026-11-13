@@ -5,10 +5,10 @@
  * - email: endereço profissional exibido em Contato.
  * - curriculo: caminho do PDF, por exemplo "/assets/arthur-borges-curriculo.pdf".
  * - formEndpoint: endereço que recebe o formulário (ex.: Formspree, "https://formspree.io/f/SEU_ID").
- *   Sem ele, o formulário valida os campos e orienta o visitante a usar o LinkedIn.
+ *   Sem ele, o formulário abre o aplicativo de e-mail do visitante com a mensagem já preenchida.
  */
 const CONFIG = {
-  email: '',
+  email: 'arthurborgess21@gmail.com',
   curriculo: '',
   formEndpoint: '',
   linkedin: 'https://www.linkedin.com/in/arthurborgessantos/',
@@ -181,10 +181,17 @@ function prepararFormulario() {
     }
 
     if (!CONFIG.formEndpoint) {
+      // Sem serviço de envio: abre o e-mail do visitante já endereçado e preenchido.
+      const v = valores();
+      const assunto = v.assunto.trim() || `Contato pelo site · ${v.nome.trim()}`;
+      const corpo = `${v.mensagem.trim()}\n\n${v.nome.trim()}\n${v.email.trim()}`;
+      window.location.href =
+        `mailto:${CONFIG.email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
       status.className = 'formulario-status aviso';
       status.innerHTML =
-        'O envio direto por aqui ainda está sendo configurado. Enquanto isso, fale comigo pelo ' +
-        `<a href="${CONFIG.linkedin}" target="_blank" rel="noopener">LinkedIn</a>. Sua mensagem continua no formulário.`;
+        'Abrimos seu aplicativo de e-mail com a mensagem pronta; é só enviar. Se nada abriu, escreva para ' +
+        `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a> ou fale comigo pelo ` +
+        `<a href="${CONFIG.linkedin}" target="_blank" rel="noopener">LinkedIn</a>.`;
       return;
     }
 

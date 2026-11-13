@@ -7,10 +7,10 @@ Publicado em https://arthursantx.github.io pelo GitHub Pages.
 
 | Item | Onde | Como |
 |---|---|---|
-| Fotografia profissional | `assets/img/arthur.jpg` (proporção 4:5, cerca de 800×1000) | Envie o arquivo e descomente a linha `<img>` marcada com `SUBSTITUIR` em `index.html`. Até lá, o retrato mostra o monograma. |
-| E-mail | `assets/js/site.js` → `CONFIG.email` | O cartão de e-mail em Contato aparece quando o campo é preenchido. |
+| Fotografia profissional | `assets/img/arthur.webp` (4:5, 720×900) | Já publicada. Para trocar, substitua o arquivo mantendo o nome. |
+| E-mail | `CONFIG.email` em `assets/js/site.js` | Preenchido: arthurborgess21@gmail.com. |
 | Currículo em PDF | `assets/arthur-borges-curriculo.pdf` + `CONFIG.curriculo` | O botão de download aparece quando o campo é preenchido. |
-| Envio do formulário | `CONFIG.formEndpoint` | Crie um formulário gratuito no [Formspree](https://formspree.io) e cole o endereço (`https://formspree.io/f/...`). Sem ele, o formulário valida os campos e orienta o visitante a usar o LinkedIn. |
+| Envio do formulário | `CONFIG.formEndpoint` | Crie um formulário gratuito no [Formspree](https://formspree.io) e cole o endereço (`https://formspree.io/f/...`). Sem ele, o formulário abre o aplicativo de e-mail do visitante com a mensagem já preenchida para arthurborgess21@gmail.com. |
 
 ## Decisões
 
