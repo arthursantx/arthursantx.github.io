@@ -3,13 +3,18 @@
 /**
  * Preencha quando os dados estiverem disponíveis. Campos vazios ficam ocultos no site.
  * - email: endereço profissional exibido em Contato.
- * - curriculo: caminho do PDF, por exemplo "/assets/arthur-borges-curriculo.pdf".
+ * - curriculo: caminho do PDF (texto) ou um por idioma ({ pt, en, es }).
  * - formEndpoint: endereço que recebe o formulário (ex.: Formspree, "https://formspree.io/f/SEU_ID").
  *   Sem ele, o formulário abre o aplicativo de e-mail do visitante com a mensagem já preenchida.
  */
 const CONFIG = {
   email: 'arthurborgess21@gmail.com',
-  curriculo: '',
+  // Um PDF por idioma; o botão só aparece depois que o arquivo existe no site.
+  curriculo: {
+    pt: '/assets/midia/CV_ArthurBorges_PT.pdf',
+    en: '/assets/midia/CV_ArthurBorges_EN.pdf',
+    es: '/assets/midia/CV_ArthurBorges_EN.pdf',
+  },
   formEndpoint: '',
   linkedin: 'https://www.linkedin.com/in/arthurborgessantos/',
 };
@@ -88,10 +93,23 @@ function aplicarConfiguracao() {
     document.querySelectorAll('[data-link-email]').forEach((a) => (a.href = `mailto:${CONFIG.email}`));
     document.querySelectorAll('[data-texto-email]').forEach((el) => (el.textContent = CONFIG.email));
   }
-  if (CONFIG.curriculo) {
-    document.querySelectorAll('[data-se-configurado="curriculo"]').forEach((el) => (el.hidden = false));
-    document.querySelectorAll('[data-link-curriculo]').forEach((a) => (a.href = CONFIG.curriculo));
+  const curriculo = typeof CONFIG.curriculo === 'object' ? CONFIG.curriculo[IDIOMA] || CONFIG.curriculo.pt : CONFIG.curriculo;
+  if (curriculo) {
+    quandoExistir(curriculo, () => {
+      document.querySelectorAll('[data-se-configurado="curriculo"]').forEach((el) => (el.hidden = false));
+      document.querySelectorAll('[data-link-curriculo]').forEach((a) => (a.href = curriculo));
+    });
   }
+  document.querySelectorAll('[data-video]').forEach((bloco) => {
+    const fonte = bloco.querySelector('source');
+    if (fonte) quandoExistir(fonte.getAttribute('src'), () => (bloco.hidden = false));
+  });
+}
+
+/** Mostra um recurso opcional só quando o arquivo já foi publicado (evita links quebrados). */
+function quandoExistir(url, mostrar) {
+  if (typeof fetch !== 'function') return;
+  fetch(url, { method: 'HEAD' }).then((r) => { if (r.ok) mostrar(); }).catch(() => {});
 }
 
 function prepararTopo() {

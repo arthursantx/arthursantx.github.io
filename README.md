@@ -9,7 +9,8 @@ Publicado em https://arthursantx.github.io pelo GitHub Pages.
 |---|---|---|
 | Fotografia profissional | `assets/img/arthur.webp` (4:5, 720×900) | Já publicada. Para trocar, substitua o arquivo mantendo o nome. |
 | E-mail | `CONFIG.email` em `assets/js/site.js` | Preenchido: arthurborgess21@gmail.com. |
-| Currículo em PDF | `assets/arthur-borges-curriculo.pdf` + `CONFIG.curriculo` | O botão de download aparece quando o campo é preenchido. |
+| Currículo em PDF | `assets/midia/CV_ArthurBorges_PT.pdf` e `CV_ArthurBorges_EN.pdf` (`CONFIG.curriculo`) | Um arquivo por idioma (o espanhol usa o inglês). O botão só aparece quando o arquivo existe. |
+| Vídeo do NEXUS | `assets/midia/nexus-apresentacao.mp4` e `.jpg` | Aparece no estudo de caso quando o arquivo existe. |
 | Envio do formulário | `CONFIG.formEndpoint` | Crie um formulário gratuito no [Formspree](https://formspree.io) e cole o endereço (`https://formspree.io/f/...`). Sem ele, o formulário abre o aplicativo de e-mail do visitante com a mensagem já preenchida para arthurborgess21@gmail.com. |
 
 ## Decisões
