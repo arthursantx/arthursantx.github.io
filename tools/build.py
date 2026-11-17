@@ -7,7 +7,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from traducoes import T, MANTER
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
-PAGINAS = ['index.html', 'projetos/nexus/index.html']
+PAGINAS = ['index.html', 'projetos/nexus/index.html', 'privacidade/index.html']
 IDIOMAS = {'en': (1, 'en', 'en_US'), 'es': (2, 'es', 'es_ES')}
 ATRIBUTOS = ('aria-label', 'alt', 'title', 'placeholder')
 

@@ -23,6 +23,12 @@ Publicado em https://arthursantx.github.io pelo GitHub Pages.
 - **Diagrama "Onde eu atuo":** Tecnologia, Negócios e Pessoas como três círculos; cada área e interseção mostra como aparece no trabalho real. Sem JavaScript, os textos aparecem em lista.
 - **SEO:** metadados, Open Graph (`assets/img/og.jpg`), dados estruturados `Person`, `sitemap.xml`, `robots.txt` e página 404.
 
+## Segurança, privacidade e licença
+
+- **Licença:** todos os direitos reservados (ver `LICENSE`). O código é público para consulta e avaliação, não para reutilização.
+- **Privacidade:** página `/privacidade/` (PT, EN e ES). O site não coleta dados; preferências ficam só no navegador do visitante.
+- **Segurança:** Content Security Policy e `referrer` restrito em todas as páginas (via `<meta>`, já que o GitHub Pages não permite cabeçalhos próprios), links externos com `rel="noopener"`, nenhum segredo no código. Vulnerabilidades: `SECURITY.md` e `/.well-known/security.txt`.
+
 ## Estrutura
 
 ```
