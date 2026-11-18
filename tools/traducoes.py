@@ -7,6 +7,7 @@ o build avisa quando encontrar texto sem tradução.
 
 # Textos que são iguais nos três idiomas (nomes próprios, marcas, números e símbolos).
 MANTER = {
+    'DuckDB', 'Python',
     '09', 'arthurborgess21@gmail.com', 'security.txt',
     'Angular', 'Java', 'MariaDB', 'Spring Boot', 'TCC · ETEC', 'UBS · FATEC', 'github.com/arthursantx',
     'Arthur Borges', 'Arthur Borges ·', 'Arthur Borges · Technology &amp; Business Professional',
@@ -22,6 +23,14 @@ MANTER = {
 }
 
 T = [
+    ('Estudo de caso de dados · atualizado todo mês', 'Data case study · updated monthly', 'Caso de estudio de datos · actualizado cada mes'),
+    ('Pix no Brasil: onde ainda tem espaço para crescer', 'Pix in Brazil: where it still has room to grow', 'Pix en Brasil: dónde todavía tiene espacio para crecer'),
+    ('Análise com dados abertos do Banco Central e do Censo 2022: quanto o Pix cresceu, onde é mais e menos usado, como virou pagamento no comércio e o que aconteceu com os golpes. Coleta, SQL e dashboard atualizados automaticamente.', 'Analysis with open data from Brazil’s Central Bank and the 2022 Census: how much Pix (Brazil’s instant payment system) has grown, where it is used most and least, how it became a retail payment method and what happened to fraud. Data collection, SQL and dashboard update automatically.', 'Análisis con datos abiertos del Banco Central de Brasil y del Censo 2022: cuánto creció el Pix (el sistema de pagos instantáneos de Brasil), dónde se usa más y menos, cómo se volvió un medio de pago en el comercio y qué pasó con los fraudes. La recolección, el SQL y el dashboard se actualizan automáticamente.'),
+    ('Dashboard', 'Dashboard', 'Dashboard'),
+    ('PIX · DADOS', 'PIX · DATA', 'PIX · DATOS'),
+    ('Dados abertos', 'Open data', 'Datos abiertos'),
+    ('perguntas de negócio, escolha das fontes, análise e recomendações.', 'business questions, choice of data sources, analysis and recommendations.', 'preguntas de negocio, elección de fuentes, análisis y recomendaciones.'),
+    ('Ver dashboard e estudo de caso', 'See dashboard and case study', 'Ver dashboard y caso de estudio'),
     # ---------- metadados ----------
     ('Arthur Borges conecta tecnologia, negócios e pessoas. Formado em Análise e Desenvolvimento de Sistemas, atua em Revenue com dados, processos e Business Intelligence.',
      'Arthur Borges connects technology, business and people. A Systems Analysis and Development graduate working in Revenue with data, processes and Business Intelligence.',
